@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../common/bootstrap4.5.3/css/bootstrap.css" />
+    <script src="../common/jquery/jquery-3.5.1.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            /*
+                each(): 선택한 jQuery의 객체수만큼 자동으로 반복하는 메소드
+                아래는 div태그 선택자를 통해 얻어온 개체가 2개이므로
+                2번 반복하게 된다.
+
+                css():  사용법1 - 매개변수 1,2를 통해 속성과 값을 설정한다.
+                        엘리먼트선택.css("속성1", "값1").css(반복)
+                        사용법2 - JSON형태로 속성값을 설정한다
+                        엘리먼트선택.css({"속성1":"값1"})
+
+            */
+            $('div').each(function(index){
+                $(this).css({'width':'500px', 'height':'200px', 'border':'solid red 2px'});
+
+            });
+            //태그선택자를 통해 button을 모두 선택
+            $('button').click(function(){
+                //article1엘리먼트에 설정된 폰트크기를 가져와서 숫자로 변경
+                var size=
+                    parseInt($("#articel1").css("fontSize"));
+                    //버튼태그 사이의 텍스트를 얻어와서 확인
+                    if($(this).text()=="기사늘리기"){
+                        size+=2; //크기증가
+                    }
+                    else{
+                        size-=2; //크기감소
+                    }
+                    //위에서 계산된 값으로 폰트크기 지정함
+                    $('div').css('fontSize', size+"px");
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <h2>css() 메소드</h2>
+	
+	<h3>뉴스기사 늘리기/줄이기</h3>
+	
+	<button id="big">기사늘리기</button>
+	<button id="small">기사줄이기</button>
+	
+	<div id="article1" style="font-size:12px;">
+		Kelly Reichardt (/ˈraɪkɑːrt/; born March 3, 1964)[1] is an American film director and screenwriter.[2] She is known for her minimalist-style films, many of which deal with working class characters in small, rural communities.[3][4]
+
+She made her feature film debut with River of Grass (1994), and subsequently directed a series of films set and filmed in Oregon: the dramas Old Joy (2006) and Wendy and Lucy (2008); the Western Meek's Cutoff (2010); and the thriller Night Moves (2013). In 2016, Reichardt wrote and directed the Montana-set drama Certain Women, and in 2019 directed First Cow, again set in Oregon.
+	</div>	
+	<div id="article2" style="font-size:12px;">
+		Reichardt was born in 1964 and raised in Miami, Florida. She developed a passion for photography when she was young. Her parents were law enforcement officers who separated when she was young. She earned her MFA at the School of the Museum of Fine Arts in Boston. Aside from working as a director, she also teaches at liberal arts colleges.[5]
+	</div>		
+</body>
+</html>
