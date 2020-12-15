@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQ18Val.html</title>
+    <link rel="stylesheet" href="../common/bootstrap4.5.3/css/bootstrap.css" />
+    <script src="../common/jquery/jquery-3.5.1.js"></script>
+    <script>
+        $(function(){
+            //페이지 로드가 끝난 후 값 설정하기. 주로 정보수정에 활용된다(우선순위가 높아서 최종안이 된다)
+            $('input:text').val('질리언앤더슨');
+            $('input:radio').val('[여자]');
+            //여러 항목을 선택할 때는 JSON배열을 사용한다
+            $('#sel').val(['pol', 'ent']);
+            $('input:checkbox').val(['마카롱', '스콘']);
+            $('input:button').click(function(){
+                var msg="";
+                msg+=$('#txt').val()+"\n";
+                //만약 체크된 항목이 없다면 undefined 출력됨
+                msg+=$('input:radio[name=gender]:checked').val()+"\n";
+                msg+=$('#sel').val();
+                alert(msg);
+            });
+        });
+
+    </script>
+</head>
+<body>
+	<h2>val()메소드</h2>
+	
+	텍스트박스 : <input type="text" id="txt" value="질리언앤더슨" />
+	<br />
+	라디오박스 :
+	<input type="radio" name="gender" value="남자" />Man
+	<input type="radio" name="gender" value="여자" checked />Woman
+	<br />
+	셀렉트리스트:
+	<select id="sel" multiple="multiple" size="3">
+		<option value="pol">정치</option>
+		<option value="eco" selected>경제</option>
+		<option value="ent">연예</option>
+	</select>	
+	<br />
+	체크박스 :
+	<input type="checkbox" name="favo" value="마카롱" />마카롱
+	<input type="checkbox" name="favo" value="치아바타" />치아바타
+	<input type="checkbox" name="favo" value="스콘" />스콘
+	<input type="checkbox" name="favo" value="사워도우브래드" />사워도우브래드
+	<br />
+	<input type="button" value="확인" />
+</body>
+
+</html>
